@@ -1,13 +1,15 @@
 let characterWidth = 80; 
 let characterHeight = 300; 
+let x1; 
+let y1; 
 
 function setup() {
     createCanvas(1200, windowHeight);
 }
 
 function draw() {
-    let x1 = 100; 
-    let y1 = windowHeight/2; 
+    x1 = 100; 
+    y1 = windowHeight/2; 
 
     background(183,54, 26); 
 
