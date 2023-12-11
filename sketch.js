@@ -209,9 +209,11 @@ function speechbubble(X, Y) {
 function description2() {
   speechbubble(100, 120); 
  }
+
 function desciption3() {
   speechbubble(70, 120); 
 }
+
 // function description4() {
 
 // }
