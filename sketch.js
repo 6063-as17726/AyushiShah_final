@@ -230,7 +230,7 @@ function desciption3() {
  function story1() {
   //button 1 - click through story, audio, visuals 
   let phrase = "This is a test";  
-  let end = "The End. Click d to go back to main page."; 
+  let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   textSize(20);
 
@@ -238,9 +238,9 @@ function desciption3() {
 
   if(keyIsPressed) {
     if(key == 'a') {
-      image(image1, 0, 0); 
       counter1++; 
-      }
+      image(image1, 0, 0);  
+      } 
     }
 
   // if(counter1 == 1 ) {
