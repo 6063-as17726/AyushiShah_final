@@ -1,6 +1,6 @@
 //characters 
-let characterWidth = 80; 
-let characterHeight = 300; 
+let characterWidth = 160; 
+let characterHeight = 600; 
 let x1; 
 let y1;
 let tellingstory1 = 0; 
@@ -32,7 +32,7 @@ function setup() {
     y1 = windowHeight/2; 
     x2 = 500; 
     y2 = windowHeight/2; 
-    x3 = 1100; 
+    x3 = 900; 
     y3 = windowHeight/2; 
 
     pixelDensity(1);
@@ -81,7 +81,7 @@ function draw() {
 
 function drawCharacters() {
  
-  background(219, 62, 62); 
+  // background(219, 62, 62); 
 
   character1(x1, y1);
   character2(x2, y2);
@@ -92,6 +92,7 @@ function character1(X, Y) {
   //x1, y1
   push();
   translate(X,Y);
+  scale(2); 
 
   stroke(0);
   strokeWeight(1);
@@ -147,6 +148,7 @@ function character2(X,Y) {
   //x2, y2
   push();
   translate(X,Y);
+  scale(2); 
 
   stroke(0);
   strokeWeight(1);
@@ -171,9 +173,12 @@ function character2(X,Y) {
   ellipse(51, 75, 15, 50); 
 
  // Eyes
- fill(0);
+ fill(255);
  ellipse(20, 40, 10, 10);
  ellipse(40, 40, 10, 10);
+ fill(0);
+ ellipse(20, 40, 5, 5);
+ ellipse(40, 40, 5, 5);
 
  //smile 
  fill(255, 0, 0); 
@@ -198,9 +203,61 @@ rect(25, 150, 20, 5);
 
 }
 
-function character3() {
+function character3(X,Y) {
   //x3, y3
-  
+  push();
+  translate(X,Y);
+  scale(2); 
+
+  stroke(0);
+  strokeWeight(1);
+
+  //arms
+  fill("SandyBrown");
+  rect(0, 55, 20, 50);
+  rect(40, 55, 20, 50);
+
+   // Body
+   fill("DarkSeaGreen");
+   rect(10, 55, 40, 50);
+
+   // Face
+   fill("SandyBrown");
+   ellipse(30, 35, 50, 50);
+
+  // Hair
+  fill(0);
+  arc(30, 30, 50, 50, PI, 0, CHORD);
+  ellipse(9, 75, 15, 50); 
+  ellipse(51, 75, 15, 50); 
+
+ // Eyes
+ fill(255);
+ ellipse(20, 40, 10, 10);
+ ellipse(40, 40, 10, 10);
+ fill(0);
+ ellipse(20, 40, 5, 5);
+ ellipse(40, 40, 5, 5);
+
+ //smile 
+ fill(255, 0, 0); 
+ arc(30, 50, 10, 10, 0, PI, CHORD);
+
+ // Skirt
+ fill("AntiqueWhite");
+ beginShape(); 
+ vertex(10, 105); 
+ vertex(50, 105); 
+ vertex(60, 150); 
+ vertex(0, 150);
+ endShape(); 
+
+// Legs
+fill(0);
+rect(15, 150, 20, 5);
+rect(25, 150, 20, 5);
+
+ pop(); 
 }
 
 function speechbubble(X, Y) {
@@ -248,29 +305,45 @@ function desciption3() {
   text('This is a test', x3+10, 120+30, 120, 100 );
 }
 
-// function description4() {
 
-// }
-
- function story1() {
+function story1() {
+  let prevcounter1; 
   //button 1 - click through story, audio, visuals 
   let phrase = "This is a test";  
   let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   textSize(20);
 
-  background(219, 62, 62);
-
-  if(keyIsPressed) {
-    if(key == 'a') {
-      counter1++;  
-      image1.resize(500, 450); 
-      image(image1, 0, 0);
-      } 
+  if (keyIsPressed) {
+    if (key == "a" && prevKey != "a") {
+      counter1++;
     }
-  // if(counter1 == 1 ) {
-  //   if(keyIsPressed) {
-  //     if (key == 'a') {
+    prevKey = key;
+  } else {
+    prevKey = -1;
+  }
+  if(counter1 == 1) { 
+    image1.resize(500, 450); 
+    image(image1, 0, 0);  
+  }
+  // if(counter1 == 2) { 
+  //   image1.resize(500, 450); 
+  //   image(image1, 0, 0);
+  //   if (millis() > nextUpdateMillis) {
+  //     currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+          
+  //     nextUpdateMillis = millis() + random(30, 160);
+  //   }
+          
+  //   let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  //   text(phraseToDraw, MARGIN, MARGIN, width - 2 * MARGIN, height);
+  //   counter1++; 
+  // }
+}
+
+
+
+  // if(counter1>0) {
   //       if (millis() > nextUpdateMillis) {
   //         currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
       
@@ -282,9 +355,8 @@ function desciption3() {
 
   //       counter1++; 
   //     }
-  //   }
-  // }
- }
+
+
 // function story2() {
   //button 1 - click through story, audio, visuals 
 // }
