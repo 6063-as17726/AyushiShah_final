@@ -295,7 +295,6 @@ function description2() {
   text('This is a test', x2+10, 120+30, 120, 100 ); 
  }
 
-
 function desciption3() {
   speechbubble(x3, 120); 
   textSize(20);
@@ -304,7 +303,6 @@ function desciption3() {
   strokeWeight(1);
   text('This is a test', x3+10, 120+30, 120, 100 );
 }
-
 
 function story1() {
   let prevcounter1; 
