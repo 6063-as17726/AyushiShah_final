@@ -15,6 +15,13 @@ let nextUpdateMillis = 0;
 
 function setup() {
     createCanvas(1200, windowHeight);
+    x1 = 100; 
+    y1 = windowHeight/2; 
+    x2 = 500; 
+    y2 = windowHeight/2; 
+    x3 = 1100; 
+    y3 = windowHeight/2; 
+    
 }
 
 function draw() {
@@ -44,7 +51,7 @@ function draw() {
     mouseY > y3 &&
     mouseY < y3 + characterHeight 
     ){
-      description3(); 
+      //description3(); 
       }
      // if (
     //   mouseX > x4 &&
@@ -59,18 +66,12 @@ function draw() {
 }
 
 function drawCharacters() {
-  x1 = 100; 
-  y1 = windowHeight/2; 
-  x2 = 500; 
-  y2 = windowHeight/2; 
-  x3 = 1100; 
-  y3 = windowHeight/2; 
-  
+ 
   background(183,54, 26); 
 
   character1(x1, y1);
   character2(x2, y2);
-  character3(x3, y3);
+  //character3(x3, y3);
 }
 
 function character1(X, Y) {
@@ -203,11 +204,11 @@ function speechbubble(X, Y) {
 }
 
  function description1() {
-  speechbubble(70, 120); 
+  speechbubble(x1, 120); 
  }
 
 function description2() {
-  speechbubble(100, 120); 
+  speechbubble(x2, 120); 
  }
 
 function desciption3() {
@@ -252,7 +253,11 @@ function mouseClicked() {
     mouseY > y1 &&
      mouseY < y1 + characterHeight
      )  
-      { story1();
+      { //connecttoserial
+        //if function - open serial only if it already is not open 
+        //if (!mSerial.opened())
+        print(mouseX); 
+        story1();
        }
 //    else if (
 //     mouseX > x2 &&
