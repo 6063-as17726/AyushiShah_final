@@ -320,7 +320,7 @@ function description3() {
 function story1() {
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-  let phrase = "THIS IS A TEST";  
+  let phrase = "THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST";  
   //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   fill(255); 
@@ -345,7 +345,7 @@ function story1() {
       nextUpdateMillis = millis() + random(30, 160);
     }
   let phraseToDraw = phrase.slice(0, currentMaxIndex);
-  text(phraseToDraw, MARGIN, MARGIN, width - 2 * MARGIN, height);
+  text(phraseToDraw, MARGIN, MARGIN, 500, height);
   }
    if (keyIsPressed) {
     if (key == "d" && prevKey != "a") {
