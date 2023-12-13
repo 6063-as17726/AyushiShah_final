@@ -295,7 +295,7 @@ function description2() {
   text('This is a test', x2+10, 120+30, 120, 100 ); 
  }
 
-function desciption3() {
+function description3() {
   speechbubble(x3, 120); 
   textSize(20);
   fill(0);
@@ -324,9 +324,7 @@ function story1() {
     image1.resize(500, 450); 
     image(image1, 0, 0);  
   }
-  // if(counter1 == 2) { 
-  //   image1.resize(500, 450); 
-  //   image(image1, 0, 0);
+  //   if(counter1 == 1) { 
   //   if (millis() > nextUpdateMillis) {
   //     currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
           
