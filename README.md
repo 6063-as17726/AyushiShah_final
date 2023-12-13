@@ -1,60 +1,13 @@
-# p5.js Template
+This WIP file consists of the main logic and working of my final code. Currently, I have made all the logics work for character 1. I have a working version of my code for character 1. 
+Before the final, I need to: 
+1. Copy and paste the logic for character 2 and character 3 
+2. Update the placeholder text and images. 
+3. Update the key press with button press, and finalize the code to connect to serial when the characters are clicked. 
+4. Make stylistic and visual decisions on the overall look of the program. 
 
-This is a README file that can be used to describe and document your assignment.
-
-Markdown Cheatsheet (from [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)):
-
----
----
-
-# Heading1
-## Heading2
-### Heading3
-#### Heading4
-##### Heading5
-###### Heading6
-
-**bold text**
-
-*italicized text*
-
-~~strikethrough text~~
-
-Ordered List:
-1. First item
-2. Second item
-3. Third item
-
-Unordered List:
-- First item
-- Second item
-- Third item
-
-`short code block`
-
-```
-extended code block
-fun() {
-  return 0
-}
-```
-
-Link:  
-[linked text](https://www.example.com)
+Here are some reference images from office hours, for how I will extract the button click values and use it : 
+[![GZohAg.jpg](https://imgpile.com/images/GZohAg.jpg)](https://imgpile.com/i/GZohAg)
+[![GZodJR.jpg](https://imgpile.com/images/GZodJR.jpg)](https://imgpile.com/i/GZodJR)
 
 
-Image with url:  
-![image description](https://dm-gy-6063-2023f-d.github.io/assets/homework/02/clark-espaco-modulado-00.jpg)
 
-
-Image on repo:  
-![image description](./file-name.jpg)
-
-
-To start a new line, add two spaces at the end of a line, like this:  
-this is a new line.
-
-
-To start a new paragraph, leave an empty line between two lines of text.
-
-This is a new paragraph.

@@ -18,7 +18,7 @@ let image3;
 let counter3 = 0; 
 
 //text 
-let MARGIN = 40;
+let MARGIN = 50;
 let currentMaxIndex = 0;
 let nextUpdateMillis = 0;
 
@@ -86,8 +86,14 @@ function draw() {
 }
 
 function drawCharacters() {
- 
-  // background(219, 62, 62); 
+  let phrase = "WELCOME!"
+  background(219, 62, 62); 
+  textAlign(LEFT, TOP);
+  fill(255); 
+  stroke(255); 
+  textSize(45);
+
+  text(phrase, MARGIN, MARGIN, width - 2 * MARGIN, height);
 
   character1(x1, y1);
   character2(x2, y2);
@@ -140,7 +146,7 @@ function character1(X, Y) {
   vertex(50, 105); 
   vertex(60, 130); 
   vertex(0, 130);
-  endShape(); 
+  endShape(CLOSE); 
 
   // Legs
   fill(0);
@@ -197,7 +203,7 @@ function character2(X,Y) {
  vertex(50, 105); 
  vertex(60, 150); 
  vertex(0, 150);
- endShape(); 
+ endShape(CLOSE);  
 
 // Legs
 fill(0);
@@ -218,24 +224,31 @@ function character3(X,Y) {
   stroke(0);
   strokeWeight(1);
 
+   // Hair 1
+   fill(0);
+   beginShape(); 
+   vertex(50,15);
+   vertex(10,15); 
+   vertex(0,80); 
+   vertex(60,80); 
+   endShape(CLOSE); 
+
   //arms
   fill("SandyBrown");
   rect(0, 55, 20, 50);
   rect(40, 55, 20, 50);
 
    // Body
-   fill("DarkSeaGreen");
+   fill("LightSkyBlue");
    rect(10, 55, 40, 50);
 
    // Face
    fill("SandyBrown");
    ellipse(30, 35, 50, 50);
 
-  // Hair
+  // Hair 2
   fill(0);
   arc(30, 30, 50, 50, PI, 0, CHORD);
-  ellipse(9, 75, 15, 50); 
-  ellipse(51, 75, 15, 50); 
 
  // Eyes
  fill(255);
@@ -249,19 +262,13 @@ function character3(X,Y) {
  fill(255, 0, 0); 
  arc(30, 50, 10, 10, 0, PI, CHORD);
 
- // Skirt
- fill("AntiqueWhite");
- beginShape(); 
- vertex(10, 105); 
- vertex(50, 105); 
- vertex(60, 150); 
- vertex(0, 150);
- endShape(); 
-
 // Legs
 fill(0);
-rect(15, 150, 20, 5);
-rect(25, 150, 20, 5);
+rect(13, 106, 15, 45);
+rect(33, 106, 15, 45);
+fill("Cornsilk");
+rect(13, 151, 15, 5);
+rect(33, 151, 15, 5);
 
  pop(); 
 }
@@ -311,10 +318,13 @@ function description3() {
 }
 
 function story1() {
+  background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-  let phrase = "This is a test";  
+  let phrase = "THIS IS A TEST";  
   //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
+  fill(255); 
+  stroke(255); 
   textSize(20); 
   if (keyIsPressed) {
     if (key == "a" && prevKey != "a") {
@@ -326,7 +336,7 @@ function story1() {
   }
   if(counter1 >= 1) { 
     image1.resize(500, 450); 
-    image(image1, 0, 0);  
+    image(image1, 600, 50);  
   }
   if(counter1 >= 2) { 
     if (millis() > nextUpdateMillis) {
@@ -334,26 +344,17 @@ function story1() {
           
       nextUpdateMillis = millis() + random(30, 160);
     }
-          
   let phraseToDraw = phrase.slice(0, currentMaxIndex);
   text(phraseToDraw, MARGIN, MARGIN, width - 2 * MARGIN, height);
   }
-  // if 'd' is pressed -drawcharacters(), set tellingstory = 0; 
+   if (keyIsPressed) {
+    if (key == "d" && prevKey != "a") {
+      drawCharacters(); 
+      tellingstory1 = 0;
+      counter1 = 0;  
+    }
+  }
 }
-
-  // if(counter1>0) {
-  //       if (millis() > nextUpdateMillis) {
-  //         currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
-      
-  //         nextUpdateMillis = millis() + random(30, 160);
-  //       }
-      
-  //       let phraseToDraw = phrase.slice(0, currentMaxIndex);
-  //       text(phraseToDraw, MARGIN, MARGIN, width - 2 * MARGIN, height);
-
-  //       counter1++; 
-  //     }
-
 
 // function story2() {
   //button 1 - click through story, audio, visuals 
