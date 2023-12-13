@@ -49,7 +49,9 @@ function draw() {
     mouseX < x1 + characterWidth &&
     mouseY > y1 &&
     mouseY < y1 + characterHeight && 
-    tellingstory1 == 0
+    tellingstory1 == 0 && 
+    tellingstory2 == 0 && 
+    tellingstory3 == 0 
     ){
       description1(); 
       }
@@ -58,7 +60,9 @@ function draw() {
     mouseX < x2 + characterWidth &&
     mouseY > y2 &&
     mouseY < y2 + characterHeight && 
-    tellingstory2 == 0
+    tellingstory1 == 0 && 
+    tellingstory2 == 0 && 
+    tellingstory3 == 0 
     ){
       description2(); 
       }
@@ -67,7 +71,9 @@ function draw() {
     mouseX < x3 + characterWidth &&
     mouseY > y3 &&
     mouseY < y3 + characterHeight && 
-    tellingstory3 == 0
+    tellingstory1 == 0 && 
+    tellingstory2 == 0 && 
+    tellingstory3 == 0 
     ){
       description3(); 
       }
@@ -305,13 +311,11 @@ function description3() {
 }
 
 function story1() {
-  let prevcounter1; 
   //button 1 - click through story, audio, visuals 
   let phrase = "This is a test";  
-  let end = "The End! Click 'd' to go back to main page."; 
+  //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
-  textSize(20);
-
+  textSize(20); 
   if (keyIsPressed) {
     if (key == "a" && prevKey != "a") {
       counter1++;
@@ -320,24 +324,22 @@ function story1() {
   } else {
     prevKey = -1;
   }
-  if(counter1 == 1) { 
+  if(counter1 >= 1) { 
     image1.resize(500, 450); 
     image(image1, 0, 0);  
   }
-  //   if(counter1 == 1) { 
-  //   if (millis() > nextUpdateMillis) {
-  //     currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+  if(counter1 >= 2) { 
+    if (millis() > nextUpdateMillis) {
+      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
           
-  //     nextUpdateMillis = millis() + random(30, 160);
-  //   }
+      nextUpdateMillis = millis() + random(30, 160);
+    }
           
-  //   let phraseToDraw = phrase.slice(0, currentMaxIndex);
-  //   text(phraseToDraw, MARGIN, MARGIN, width - 2 * MARGIN, height);
-  //   counter1++; 
-  // }
+  let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  text(phraseToDraw, MARGIN, MARGIN, width - 2 * MARGIN, height);
+  }
+  // if 'd' is pressed -drawcharacters(), set tellingstory = 0; 
 }
-
-
 
   // if(counter1>0) {
   //       if (millis() > nextUpdateMillis) {
@@ -397,7 +399,5 @@ function mouseClicked() {
         //if (!mSerial.opened())
         tellingstory3 = 1; 
        }
-
-
- }
+}
   
