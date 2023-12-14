@@ -24,6 +24,8 @@ let nextUpdateMillis = 0;
 
 function preload() { 
   image1 = loadImage("./Character1.png");
+  image2 = loadImage("./Character2.png");
+  image3 = loadImage("./Character3.png");
 }
 
 function setup() {
@@ -80,6 +82,12 @@ function draw() {
 
   if (tellingstory1 == 1) {
     story1();
+  } 
+  if (tellingstory2 == 1) {
+    story2();
+  } 
+  if (tellingstory3 == 1) {
+    story3();
   } 
   
   //button 2 - return to homepage 
