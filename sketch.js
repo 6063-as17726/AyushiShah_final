@@ -110,58 +110,61 @@ function drawCharacters() {
 
 function character1(X, Y) {
   //x1, y1
-  push();
+   push();
   translate(X,Y);
   scale(2); 
 
   stroke(0);
   strokeWeight(1);
 
-   //arms
-   fill("LightSalmon");
-   rect(0, 55, 20, 50);
-   rect(40, 55, 20, 50);
-
-    // Body
-    fill("LightPink");
-    rect(10, 55, 40, 50);
-
-    // Face
-    fill("LightSalmon");
-    ellipse(30, 35, 50, 50);
-
-   // Hair
+   // Hair 1
    fill(0);
-   arc(30, 30, 50, 50, PI, 0, CHORD);
-   ellipse(30, 0, 30, 30); 
+   beginShape(); 
+   vertex(50,15);
+   vertex(10,15); 
+   vertex(0,80); 
+   vertex(60,80); 
+   endShape(CLOSE); 
 
-  // Eyes
-  fill(255);
-  ellipse(20, 40, 10, 10);
-  ellipse(40, 40, 10, 10);
+  //arms
+  fill("SandyBrown");
+  rect(0, 55, 20, 50);
+  rect(40, 55, 20, 50);
+
+   // Body
+   fill("LightSkyBlue");
+   rect(10, 55, 40, 50);
+
+   // Face
+   fill("SandyBrown");
+   ellipse(30, 35, 50, 50);
+
+  // Hair 2
   fill(0);
-  ellipse(20, 40, 5, 5);
-  ellipse(40, 40, 5, 5);
+  arc(30, 30, 50, 50, PI, 0, CHORD);
 
-  //smile 
-  fill(255, 0, 0); 
-  arc(30, 50, 10, 10, 0, PI, CHORD);
+ // Eyes
+ fill(255);
+ ellipse(20, 40, 10, 10);
+ ellipse(40, 40, 10, 10);
+ fill(0);
+ ellipse(20, 40, 5, 5);
+ ellipse(40, 40, 5, 5);
 
-  // Skirt
-  fill("MediumPurple");
-  beginShape(); 
-  vertex(10, 105); 
-  vertex(50, 105); 
-  vertex(60, 130); 
-  vertex(0, 130);
-  endShape(CLOSE); 
+ //smile 
+ fill(255, 0, 0); 
+ arc(30, 50, 10, 10, 0, PI, CHORD);
 
-  // Legs
-  fill(0);
-  rect(15, 130, 20, 20);
-  rect(25, 130, 20, 20);
+// Legs
+fill(0);
+rect(13, 106, 15, 45);
+rect(33, 106, 15, 45);
+fill("Cornsilk");
+rect(13, 151, 15, 5);
+rect(33, 151, 15, 5);
 
-  pop(); 
+ pop(); 
+
 } 
 
 function character2(X,Y) {
@@ -232,53 +235,51 @@ function character3(X,Y) {
   stroke(0);
   strokeWeight(1);
 
-   // Hair 1
+   //arms
+   fill("LightSalmon");
+   rect(0, 55, 20, 50);
+   rect(40, 55, 20, 50);
+
+    // Body
+    fill("LightPink");
+    rect(10, 55, 40, 50);
+
+    // Face
+    fill("LightSalmon");
+    ellipse(30, 35, 50, 50);
+
+   // Hair
    fill(0);
-   beginShape(); 
-   vertex(50,15);
-   vertex(10,15); 
-   vertex(0,80); 
-   vertex(60,80); 
-   endShape(CLOSE); 
+   arc(30, 30, 50, 50, PI, 0, CHORD);
+   ellipse(30, 0, 30, 30); 
 
-  //arms
-  fill("SandyBrown");
-  rect(0, 55, 20, 50);
-  rect(40, 55, 20, 50);
-
-   // Body
-   fill("LightSkyBlue");
-   rect(10, 55, 40, 50);
-
-   // Face
-   fill("SandyBrown");
-   ellipse(30, 35, 50, 50);
-
-  // Hair 2
+  // Eyes
+  fill(255);
+  ellipse(20, 40, 10, 10);
+  ellipse(40, 40, 10, 10);
   fill(0);
-  arc(30, 30, 50, 50, PI, 0, CHORD);
+  ellipse(20, 40, 5, 5);
+  ellipse(40, 40, 5, 5);
 
- // Eyes
- fill(255);
- ellipse(20, 40, 10, 10);
- ellipse(40, 40, 10, 10);
- fill(0);
- ellipse(20, 40, 5, 5);
- ellipse(40, 40, 5, 5);
+  //smile 
+  fill(255, 0, 0); 
+  arc(30, 50, 10, 10, 0, PI, CHORD);
 
- //smile 
- fill(255, 0, 0); 
- arc(30, 50, 10, 10, 0, PI, CHORD);
+  // Skirt
+  fill("MediumPurple");
+  beginShape(); 
+  vertex(10, 105); 
+  vertex(50, 105); 
+  vertex(60, 130); 
+  vertex(0, 130);
+  endShape(CLOSE); 
 
-// Legs
-fill(0);
-rect(13, 106, 15, 45);
-rect(33, 106, 15, 45);
-fill("Cornsilk");
-rect(13, 151, 15, 5);
-rect(33, 151, 15, 5);
+  // Legs
+  fill(0);
+  rect(15, 130, 20, 20);
+  rect(25, 130, 20, 20);
 
- pop(); 
+  pop(); 
 }
 
 function speechbubble(X, Y) {
