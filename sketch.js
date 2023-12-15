@@ -43,12 +43,28 @@ function setup() {
 
     pixelDensity(1);
 
-   // mSerial = createSerial(); 
-    //readyToRead = false;
+   // setup serial
+   mSerial = createSerial();
+   readyToRead = false;
 }
 
 function draw() {
   background(219, 62, 62); 
+
+  if (mSerial.opened() && readyToRead) {
+    mSerial.clear();  
+    mSerial.write(10); 
+    readyToRead = false;
+  }
+  if (mSerial.opened() && mSerial.availableBytes()>0) {
+    let mline = mSerial.readUntil("\n");  
+    //print(mline);
+    let vals = split(mline, " "); 
+    print('Vals 0:', vals[0]); 
+    print('Vals 1:', vals[1]);   
+    readyToRead = true;
+  }
+
   if(tellingstory1 ==0 && tellingstory2 ==0 && tellingstory3 ==0) {
     drawCharacters(); } 
     
@@ -334,14 +350,7 @@ function description3() {
 }
 
 function story1() {
-  if (mSerial.availableBytes()>0) {
-    let mline = mSerial.readUntil("\n"); 
-    let vals = split (mline); 
-    print(mline);
-    //split mline 
-    //print split mline  
-    readyToRead = true;
-  }
+
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
   let phrase = "THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST";  
@@ -350,34 +359,42 @@ function story1() {
   fill(255); 
   stroke(255); 
   textSize(20); 
-  if (keyIsPressed) {
-    if (key == "a" && prevKey != "a") {
-      counter1++;
-    }
-    prevKey = key;
-  } else {
-    prevKey = -1;
+
+  let prevVals = -1; 
+  if(vals[0] == 1 ) { 
+    counter1 ++; 
   }
-  if(counter1 >= 1) { 
-    image1.resize(500, 450); 
-    image(image1, 600, 50);  
-  }
-  if(counter1 >= 2) { 
-    if (millis() > nextUpdateMillis) {
-      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+  print(counter1); 
+      
+
+  // if (keyIsPressed) {
+  //   if (key == "a" && prevKey != "a") {
+  //     counter1++;
+  //   }
+  //   prevKey = key;
+  // } else {
+  //   prevKey = -1;
+  // }
+  // if(counter1 >= 1) { 
+  //   image1.resize(500, 450); 
+  //   image(image1, 600, 50);  
+  // }
+  // if(counter1 >= 2) { 
+  //   if (millis() > nextUpdateMillis) {
+  //     currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
           
-      nextUpdateMillis = millis() + random(30, 160);
-    }
-  let phraseToDraw = phrase.slice(0, currentMaxIndex);
-  text(phraseToDraw, MARGIN, MARGIN, 500, height);
-  }
-   if (keyIsPressed) {
-    if (key == "d" && prevKey != "a") {
-      drawCharacters(); 
-      tellingstory1 = 0;
-      counter1 = 0;  
-    }
-  }
+  //     nextUpdateMillis = millis() + random(30, 160);
+  //   }
+  // let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  // text(phraseToDraw, MARGIN, MARGIN, 500, height);
+  // }
+  //  if (keyIsPressed) {
+  //   if (key == "d" && prevKey != "a") {
+  //     drawCharacters(); 
+  //     tellingstory1 = 0;
+  //     counter1 = 0;  
+  //   }
+  // }
 }
 
 // function story2() {
@@ -397,10 +414,9 @@ function mouseClicked() {
     mouseY > y1 &&
      mouseY < y1 + characterHeight
      )  
-      { //if(!mSerial.opened()) {
-          //mSerial.open(9600);   //connecttoserial
-          tellingstory1 = 1;
-        //}
+      {
+          mSerial.open(9600);   //connecttoserial
+          tellingstory1 = 1; 
       }
     else if (
       mouseX > x2 &&
@@ -408,21 +424,17 @@ function mouseClicked() {
       mouseY > y2 &&
       mouseY < y2 + characterHeight
      )  
-     { if(!mSerial.opened()) {
-          mSerial.open(9600); //connecttoserial
+     {  
           tellingstory2 = 1;
     }
-  }
       else if (
         mouseX > x3 &&
         mouseX < x3 + characterWidth &&
         mouseY > y3 &&
         mouseY < y3 + characterHeight
      )  
-     { if(!mSerial.opened()) {
-        mSerial.open(9600);  //connecttoserial
+     { 
         tellingstory3 = 1;
     }
-  }
 }
   
