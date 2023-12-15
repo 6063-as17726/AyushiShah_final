@@ -22,6 +22,10 @@ let MARGIN = 50;
 let currentMaxIndex = 0;
 let nextUpdateMillis = 0;
 
+//serial connection
+let mSerial;
+let readyToRead;
+
 function preload() { 
   image1 = loadImage("./Character1.png");
   image2 = loadImage("./Character2.png");
@@ -38,6 +42,9 @@ function setup() {
     y3 = windowHeight/2; 
 
     pixelDensity(1);
+
+   // mSerial = createSerial(); 
+    //readyToRead = false;
 }
 
 function draw() {
@@ -327,6 +334,14 @@ function description3() {
 }
 
 function story1() {
+  if (mSerial.availableBytes()>0) {
+    let mline = mSerial.readUntil("\n"); 
+    let vals = split (mline); 
+    print(mline);
+    //split mline 
+    //print split mline  
+    readyToRead = true;
+  }
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
   let phrase = "THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST";  
@@ -382,32 +397,32 @@ function mouseClicked() {
     mouseY > y1 &&
      mouseY < y1 + characterHeight
      )  
-      { //connecttoserial
-        //if function - open serial only if it already is not open 
-        //if (!mSerial.opened())
-        tellingstory1 = 1; 
-       }
+      { //if(!mSerial.opened()) {
+          //mSerial.open(9600);   //connecttoserial
+          tellingstory1 = 1;
+        //}
+      }
     else if (
       mouseX > x2 &&
       mouseX < x2 + characterWidth &&
       mouseY > y2 &&
       mouseY < y2 + characterHeight
      )  
-      { //connecttoserial
-        //if function - open serial only if it already is not open 
-        //if (!mSerial.opened())
-        tellingstory2 = 1; 
-       }
+     { if(!mSerial.opened()) {
+          mSerial.open(9600); //connecttoserial
+          tellingstory2 = 1;
+    }
+  }
       else if (
         mouseX > x3 &&
         mouseX < x3 + characterWidth &&
         mouseY > y3 &&
         mouseY < y3 + characterHeight
      )  
-      { //connecttoserial
-        //if function - open serial only if it already is not open 
-        //if (!mSerial.opened())
-        tellingstory3 = 1; 
-       }
+     { if(!mSerial.opened()) {
+        mSerial.open(9600);  //connecttoserial
+        tellingstory3 = 1;
+    }
+  }
 }
   
