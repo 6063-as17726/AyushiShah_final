@@ -132,12 +132,12 @@ function draw() {
 }
 
 function drawCharacters() {
-  let phrase = "WELCOME!"
+  let phrase = "WELCOME TO UNHEARD VOICES, a collection that delves into the often overlooked realm of women's health. \n Did you know, medical research has largely excluded women until as recently as the 1990s. This collection of stories is a response to this, that aims to shine light on the unique health related experiences of women. \n Each narrative here pieces together the diverse, complicated, and real aspect of women’s health, that may resonate with your own experiences, or open your eyes to new perspectives."; 
   background(219, 62, 62); 
   textAlign(LEFT, TOP);
   fill(255); 
   stroke(255); 
-  textSize(45);
+  textSize(20);
 
   text(phrase, MARGIN, MARGIN, width - 2 * MARGIN, height);
 
@@ -322,7 +322,7 @@ function character3(X,Y) {
 
 function speechbubble(X, Y) {
   let bubbleWidth = 150; 
-  let bubbleHeight = 150; 
+  let bubbleHeight = 100; 
   fill(211, 237, 237);
   stroke(0);
   strokeWeight(2);
@@ -337,44 +337,45 @@ function speechbubble(X, Y) {
 }
 
  function description1() {
-  speechbubble(x1, 120); 
-  textSize(20);
+  speechbubble(x1, 200); 
+  textSize(15);
   fill(0);
   stroke(0);
-  strokeWeight(1);
+  strokeWeight(0);
 
-  text('This is a test', x1+10, 120+30, 120, 100 ); 
+  text('THE STORY OF: \n MY TILTED CERVIX', x1+10, 120+100, 120, 100 ); 
  }
 
 function description2() {
-  speechbubble(x2, 120); 
-  textSize(20);
+  speechbubble(x2, 200); 
+  textSize(15);
   fill(0);
   stroke(0);
-  strokeWeight(1);
-  text('This is a test', x2+10, 120+30, 120, 100 ); 
+  strokeWeight(0);
+  text('THE STORY OF: \n ', x2+10, 120+100, 120, 100 ); 
  }
 
 function description3() {
-  speechbubble(x3, 120); 
-  textSize(20);
+  speechbubble(x3, 200); 
+  textSize(15);
   fill(0);
   stroke(0);
-  strokeWeight(1);
-  text('This is a test', x3+10, 120+30, 120, 100 );
+  strokeWeight(0);
+  text('THE STORY OF: \n ', x3+10, 120+100, 120, 100 );
 }
 
 function story1() {
-
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-  let phrase = "THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST";  
+  let phrase = ' MY TILTED CERVIX \n\n Everytime I used a tampon in, I kept noticing it would be tilted. I told some of my friends about this, and they all suggested a bunch of different things. Finally, I decided to do some of my own research to find out what was going on. I soon found that I had a tilted cervix. At first I was confused because my doctor had never mentioned it to me although I had gone for all my regular health check ups. But through my research, I found that apparently a lot of women have a tilted cervix too. And apparently, it is quite harmless in most cases. This made me feel very relieved, and now I feel like I understand my body better.\n\n THE END';  
   //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   fill(255); 
-  stroke(255); 
+  strokeWeight(0);
   textSize(20); 
-  
+
+  text("Press button 1 to move forward, and button 2 to go back", 50, 50); 
+
    if (buttonIsPressed) {
     if (button0 == 1 && prevButton0!= 1) {
       counter1++;
@@ -383,8 +384,8 @@ function story1() {
   } else {
     prevButton0 = -1;
   } 
-  //print(counter1); 
   if(counter1 >= 1) { 
+    background(219, 62, 62);  
     image1.resize(500, 450); 
     image(image1, 600, 50);  
   }
@@ -398,7 +399,7 @@ function story1() {
   text(phraseToDraw, MARGIN, MARGIN, 500, height);
   }
    if (buttonIsPressed) {
-    if (button1 == "1" && prevButton1!= "1") {
+    if (button1 == 1 && prevButton1!= 1) {
       //print (button1); 
       drawCharacters(); 
       tellingstory1 = 0;
@@ -406,34 +407,6 @@ function story1() {
     }
   }
 
-  // if (keyIsPressed) {
-  //   if (key == "a" && prevKey != "a") {
-  //     counter1++;
-  //   }
-  //   prevKey = key;
-  // } else {
-  //   prevKey = -1;
-  // }
-  // if(counter1 >= 1) { 
-  //   image1.resize(500, 450); 
-  //   image(image1, 600, 50);  
-  // }
-  // if(counter1 >= 2) { 
-  //   if (millis() > nextUpdateMillis) {
-  //     currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
-          
-  //     nextUpdateMillis = millis() + random(30, 160);
-  //   }
-  // let phraseToDraw = phrase.slice(0, currentMaxIndex);
-  // text(phraseToDraw, MARGIN, MARGIN, 500, height);
-  // }
-  //  if (keyIsPressed) {
-  //   if (key == "d" && prevKey != "a") {
-  //     drawCharacters(); 
-  //     tellingstory1 = 0;
-  //     counter1 = 0;  
-  //   }
-  // }
 }
 
 // function story2() {
