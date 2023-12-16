@@ -25,6 +25,11 @@ let nextUpdateMillis = 0;
 //serial connection
 let mSerial;
 let readyToRead;
+let buttonIsPressed = 0; 
+let button0;
+let button1; 
+let prevButton0 = -1; 
+let prevButton1 = -1;   
 
 function preload() { 
   image1 = loadImage("./Character1.png");
@@ -60,11 +65,21 @@ function draw() {
     let mline = mSerial.readUntil("\n");  
     //print(mline);
     let vals = split(mline, " "); 
-    print('Vals 0:', vals[0]); 
-    print('Vals 1:', vals[1]);   
+    //print('Vals 0:', vals[0]); 
+    //print('Vals 1:', vals[1]);   
     readyToRead = true;
-  }
+    if (vals[0] == 1 || vals[1] == 1) {
+      buttonIsPressed = 1; 
+      button0 = vals[0]; 
+      button1 = vals[1];
+    } else {
+      buttonIsPressed = 0; 
+      button0 = vals[0]; 
+      button1 = vals[1];
+    }
 
+  }
+  
   if(tellingstory1 ==0 && tellingstory2 ==0 && tellingstory3 ==0) {
     drawCharacters(); } 
     
@@ -359,13 +374,37 @@ function story1() {
   fill(255); 
   stroke(255); 
   textSize(20); 
-
-  let prevVals = -1; 
-  if(vals[0] == 1 ) { 
-    counter1 ++; 
+  
+   if (buttonIsPressed) {
+    if (button0 == 1 && prevButton0!= 1) {
+      counter1++;
+    }
+    prevButton0 = button0;
+  } else {
+    prevButton0 = -1;
+  } 
+  //print(counter1); 
+  if(counter1 >= 1) { 
+    image1.resize(500, 450); 
+    image(image1, 600, 50);  
   }
-  print(counter1); 
-      
+  if(counter1 >= 2) { 
+    if (millis() > nextUpdateMillis) {
+      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+          
+      nextUpdateMillis = millis() + random(30, 160);
+    }
+  let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  text(phraseToDraw, MARGIN, MARGIN, 500, height);
+  }
+   if (buttonIsPressed) {
+    if (button1 == "1" && prevButton1!= "1") {
+      //print (button1); 
+      drawCharacters(); 
+      tellingstory1 = 0;
+      counter1 = 0;  
+    }
+  }
 
   // if (keyIsPressed) {
   //   if (key == "a" && prevKey != "a") {
