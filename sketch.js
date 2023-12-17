@@ -29,8 +29,12 @@ let prevButton1 = -1;
 
  //text 
  let MARGIN = 50;
- let currentMaxIndex = 0;
- let nextUpdateMillis = 0;
+ let currentMaxIndex1 = 0;
+ let nextUpdateMillis1 = 0;
+ let currentMaxIndex2 = 0;
+ let nextUpdateMillis2 = 0;
+ let currentMaxIndex3 = 0;
+ let nextUpdateMillis3 = 0;
  
 
 function preload() { 
@@ -392,12 +396,12 @@ function story1() {
     image(image1, 600, 50);  
   }
   if(counter1 >= 2) { 
-    if (millis() > nextUpdateMillis) {
-      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+    if (millis() > nextUpdateMillis1) {
+      currentMaxIndex1 = min(currentMaxIndex1 + 1, phrase.length);
           
-      nextUpdateMillis = millis() + random(30, 160);
+      nextUpdateMillis1 = millis() + random(30, 160);
     }
-  let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  let phraseToDraw = phrase.slice(0, currentMaxIndex1);
   text(phraseToDraw, MARGIN, MARGIN, 500, height);
   }
    if (buttonIsPressed) {
@@ -436,12 +440,12 @@ function story2() {
     image(image3, 600, 50);  
   }
   if(counter2 >= 2) { 
-    if (millis() > nextUpdateMillis) {
-      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+    if (millis() > nextUpdateMillis2) {
+      currentMaxIndex2 = min(currentMaxIndex2 + 1, phrase.length);
           
-      nextUpdateMillis = millis() + random(30, 160);
+      nextUpdateMillis2 = millis() + random(30, 160);
     }
-  let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  let phraseToDraw = phrase.slice(0, currentMaxIndex2);
   text(phraseToDraw, MARGIN, MARGIN, 500, height);
   }
    if (buttonIsPressed) {
@@ -479,12 +483,12 @@ function story3() {
     image(image2, 600, 50);  
   }
   if(counter3 >= 2) { 
-    if (millis() > nextUpdateMillis) {
-      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+    if (millis() > nextUpdateMillis3) {
+      currentMaxIndex3 = min(currentMaxIndex3 + 1, phrase.length);
           
-      nextUpdateMillis = millis() + random(30, 160);
+      nextUpdateMillis3 = millis() + random(30, 160);
     }
-  let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  let phraseToDraw = phrase.slice(0, currentMaxIndex3);
   text(phraseToDraw, MARGIN, MARGIN, 500, height);
   }
    if (buttonIsPressed) {
