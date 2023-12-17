@@ -137,6 +137,7 @@ function drawCharacters() {
   textAlign(LEFT, TOP);
   fill(255); 
   stroke(255); 
+  strokeWeight(0); 
   textSize(20);
 
   text(phrase, MARGIN, MARGIN, width - 2 * MARGIN, height);
@@ -361,7 +362,7 @@ function description3() {
   fill(0);
   stroke(0);
   strokeWeight(0);
-  text('THE STORY OF: \n ', x3+10, 120+100, 120, 100 );
+  text('THE STORY OF: \n ADULT ACNE ', x3+10, 120+100, 120, 100 );
 }
 
 function story1() {
@@ -409,15 +410,92 @@ function story1() {
 
 }
 
-// function story2() {
+function story2() {
+  background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-// }
-// function story3() {
+  let phrase = ' MY TILTED CERVIX \n\n Everytime I used a tampon in, I kept noticing it would be tilted. I told some of my friends about this, and they all suggested a bunch of different things. Finally, I decided to do some of my own research to find out what was going on. I soon found that I had a tilted cervix. At first I was confused because my doctor had never mentioned it to me although I had gone for all my regular health check ups. But through my research, I found that apparently a lot of women have a tilted cervix too. And apparently, it is quite harmless in most cases. This made me feel very relieved, and now I feel like I understand my body better.\n\n THE END';  
+  //let end = "The End! Click 'd' to go back to main page."; 
+  textAlign(LEFT, TOP);
+  fill(255); 
+  strokeWeight(0);
+  textSize(20); 
+
+  text("Press button 1 to move forward, and button 2 to go back", 50, 50); 
+
+   if (buttonIsPressed) {
+    if (button0 == 1 && prevButton0!= 1) {
+      counter2++;
+    }
+    prevButton0 = button0;
+  } else {
+    prevButton0 = -1;
+  } 
+  if(counter2 >= 1) { 
+    background(219, 62, 62);  
+    image3.resize(500, 450); 
+    image(image3, 600, 50);  
+  }
+  if(counter2 >= 2) { 
+    if (millis() > nextUpdateMillis) {
+      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+          
+      nextUpdateMillis = millis() + random(30, 160);
+    }
+  let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  text(phraseToDraw, MARGIN, MARGIN, 500, height);
+  }
+   if (buttonIsPressed) {
+    if (button1 == 1 && prevButton1!= 1) {
+      //print (button1); 
+      drawCharacters(); 
+      tellingstory2 = 0;
+      counter2 = 0;  
+    }
+  }
+}
+function story3() {
+  background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-// }
-// function story4() {
-  //button 1 - click through story, audio, visuals 
-// }
+  let phrase = 'ADULT ACNE \n\n I never experienced acne growing up, but recently as an adult, I developed severe acne. Despite trying skincare products, diets, and water filters, nothing improved. Even a dermatologist prescribed medication had little effect. It was my gynecologist who identified the cause as a hormonal imbalance related to PCOS - polycystic ovary syndrome. She told me there was no definitive cure, so I have focused on lifestyle changes to manage the condition.So far, I have been making a conscious effort to make positive changes, and the PCOS has been under control. I also feel healthier overall too! \n\n THE END';  
+  //let end = "The End! Click 'd' to go back to main page."; 
+  textAlign(LEFT, TOP);
+  fill(255); 
+  strokeWeight(0);
+  textSize(20); 
+
+  text("Press button 1 to move forward, and button 2 to go back", 50, 50); 
+
+   if (buttonIsPressed) {
+    if (button0 == 1 && prevButton0!= 1) {
+      counter3++;
+    }
+    prevButton0 = button0;
+  } else {
+    prevButton0 = -1;
+  } 
+  if(counter3 >= 1) { 
+    background(219, 62, 62);  
+    image2.resize(500, 450); 
+    image(image3, 600, 50);  
+  }
+  if(counter3 >= 2) { 
+    if (millis() > nextUpdateMillis) {
+      currentMaxIndex = min(currentMaxIndex + 1, phrase.length);
+          
+      nextUpdateMillis = millis() + random(30, 160);
+    }
+  let phraseToDraw = phrase.slice(0, currentMaxIndex);
+  text(phraseToDraw, MARGIN, MARGIN, 500, height);
+  }
+   if (buttonIsPressed) {
+    if (button1 == 1 && prevButton1!= 1) {
+      //print (button1); 
+      drawCharacters(); 
+      tellingstory3 = 0;
+      counter3 = 0;  
+    }
+  }
+}
 
 function mouseClicked() {
    if (
