@@ -17,10 +17,6 @@ let tellingstory3 = 0;
 let image3; 
 let counter3 = 0; 
 
-//text 
-let MARGIN = 50;
-let currentMaxIndex = 0;
-let nextUpdateMillis = 0;
 
 //serial connection
 let mSerial;
@@ -30,6 +26,12 @@ let button0;
 let button1; 
 let prevButton0 = -1; 
 let prevButton1 = -1;   
+
+ //text 
+ let MARGIN = 50;
+ let currentMaxIndex = 0;
+ let nextUpdateMillis = 0;
+ 
 
 function preload() { 
   image1 = loadImage("./Character1.png");
@@ -127,7 +129,6 @@ function draw() {
   if (tellingstory3 == 1) {
     story3();
   } 
-  
   //button 2 - return to homepage 
 }
 
@@ -353,7 +354,7 @@ function description2() {
   fill(0);
   stroke(0);
   strokeWeight(0);
-  text('THE STORY OF: \n ', x2+10, 120+100, 120, 100 ); 
+  text('THE STORY OF: \n THE WHITE PANTS', x2+10, 120+100, 120, 100 ); 
  }
 
 function description3() {
@@ -374,7 +375,7 @@ function story1() {
   fill(255); 
   strokeWeight(0);
   textSize(20); 
-
+  
   text("Press button 1 to move forward, and button 2 to go back", 50, 50); 
 
    if (buttonIsPressed) {
@@ -407,13 +408,12 @@ function story1() {
       counter1 = 0;  
     }
   }
-
 }
 
 function story2() {
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-  let phrase = ' MY TILTED CERVIX \n\n Everytime I used a tampon in, I kept noticing it would be tilted. I told some of my friends about this, and they all suggested a bunch of different things. Finally, I decided to do some of my own research to find out what was going on. I soon found that I had a tilted cervix. At first I was confused because my doctor had never mentioned it to me although I had gone for all my regular health check ups. But through my research, I found that apparently a lot of women have a tilted cervix too. And apparently, it is quite harmless in most cases. This made me feel very relieved, and now I feel like I understand my body better.\n\n THE END';  
+  let phrase = 'THE WHITE PANTS \n\n I was at a movie theater when I got my first period. I did not notice the entire time, until I got up, and noticed something on my white pants. I was very far from home, and my parents were not able to pick me up for a few hours. I began panicking, but thankfully my friends stepped in. They helped me clean up and gave me a jacket I could tie around my hips. They reassured me that it would be okay and that it was normal. After that, I was able to continue my day normally. Looking back, the positive reaction I got has helped me create a positive relationship with this very normal phenomenon.\n\n THE END';  
   //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   fill(255); 
@@ -475,8 +475,8 @@ function story3() {
   } 
   if(counter3 >= 1) { 
     background(219, 62, 62);  
-    image2.resize(500, 450); 
-    image(image3, 600, 50);  
+    image2.resize(550, 450); 
+    image(image2, 600, 50);  
   }
   if(counter3 >= 2) { 
     if (millis() > nextUpdateMillis) {
@@ -514,7 +514,7 @@ function mouseClicked() {
       mouseY > y2 &&
       mouseY < y2 + characterHeight
      )  
-     {  
+     {    mSerial.open(9600);   //connecttoserial
           tellingstory2 = 1;
     }
       else if (
@@ -523,7 +523,7 @@ function mouseClicked() {
         mouseY > y3 &&
         mouseY < y3 + characterHeight
      )  
-     { 
+     {  mSerial.open(9600);   //connecttoserial
         tellingstory3 = 1;
     }
 }
