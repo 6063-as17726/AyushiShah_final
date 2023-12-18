@@ -137,7 +137,7 @@ function draw() {
 }
 
 function drawCharacters() {
-  let phrase = "WELCOME TO UNHEARD VOICES, a collection that delves into the often overlooked realm of women's health. \n Did you know, medical research has largely excluded women until as recently as the 1990s. This collection of stories is a response to this, that aims to shine light on the unique health related experiences of women. \n Each narrative here pieces together the diverse, complicated, and real aspect of women’s health, that may resonate with your own experiences, or open your eyes to new perspectives."; 
+  let phrase = "WELCOME! \n\n This is a collection that delves into the often overlooked realm of women's health. \n Did you know, medical research has largely excluded women until as recently as the 1990s. This collection of stories is a response to this, that aims to shine light on the unique health related experiences of women. \n Each narrative here pieces together the diverse, complicated, and real aspect of women’s health, that may resonate with your own experiences, or open your eyes to new perspectives."; 
   background(219, 62, 62); 
   textAlign(LEFT, TOP);
   fill(255); 
@@ -327,8 +327,8 @@ function character3(X,Y) {
 }
 
 function speechbubble(X, Y) {
-  let bubbleWidth = 150; 
-  let bubbleHeight = 100; 
+  let bubbleWidth = 175; 
+  let bubbleHeight = 75; 
   fill(211, 237, 237);
   stroke(0);
   strokeWeight(2);
@@ -343,37 +343,37 @@ function speechbubble(X, Y) {
 }
 
  function description1() {
-  speechbubble(x1, 200); 
+  speechbubble(x1, 225); 
   textSize(15);
   fill(0);
   stroke(0);
   strokeWeight(0);
 
-  text('THE STORY OF: \n MY TILTED CERVIX', x1+10, 120+100, 120, 100 ); 
+  text('THE STORY OF: \n MY TILTED CERVIX', x1+10, 120+125, 175, 100 ); 
  }
 
 function description2() {
-  speechbubble(x2, 200); 
+  speechbubble(x2, 225); 
   textSize(15);
   fill(0);
   stroke(0);
   strokeWeight(0);
-  text('THE STORY OF: \n THE WHITE PANTS', x2+10, 120+100, 120, 100 ); 
+  text('THE STORY OF: \n THE WHITE PANTS', x2+10, 120+125, 175, 100 ); 
  }
 
 function description3() {
-  speechbubble(x3, 200); 
+  speechbubble(x3, 225); 
   textSize(15);
   fill(0);
   stroke(0);
   strokeWeight(0);
-  text('THE STORY OF: \n ADULT ACNE ', x3+10, 120+100, 120, 100 );
+  text('THE STORY OF: \n ADULT ACNE ', x3+10, 120+125, 175, 100 );
 }
 
 function story1() {
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-  let phrase = ' MY TILTED CERVIX \n\n Everytime I used a tampon in, I kept noticing it would be tilted. I told some of my friends about this, and they all suggested a bunch of different things. Finally, I decided to do some of my own research to find out what was going on. I soon found that I had a tilted cervix. At first I was confused because my doctor had never mentioned it to me although I had gone for all my regular health check ups. But through my research, I found that apparently a lot of women have a tilted cervix too. And apparently, it is quite harmless in most cases. This made me feel very relieved, and now I feel like I understand my body better.\n\n THE END';  
+  let phrase = ' MY TILTED CERVIX \n\n Everytime I used a tampon, I kept noticing it would be tilted. I told some of my friends about this, and they all suggested a bunch of different things. Finally, I decided to do some of my own research to find out what was going on. I soon found out that I had a tilted cervix. At first I was confused because my doctor had never mentioned it to me although I had gone for all my regular health check ups. But through my research, I found that apparently a lot of women have a tilted cervix too. And apparently, it is quite harmless in most cases. This made me feel very relieved, and now I feel like I understand my body better.\n\n THE END';  
   //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   fill(255); 
@@ -399,7 +399,7 @@ function story1() {
     if (millis() > nextUpdateMillis1) {
       currentMaxIndex1 = min(currentMaxIndex1 + 1, phrase.length);
           
-      nextUpdateMillis1 = millis() + random(30, 160);
+      nextUpdateMillis1 = millis() + random(10, 80);
     }
   let phraseToDraw = phrase.slice(0, currentMaxIndex1);
   text(phraseToDraw, MARGIN, MARGIN, 500, height);
@@ -410,14 +410,21 @@ function story1() {
       drawCharacters(); 
       tellingstory1 = 0;
       counter1 = 0;  
+      text(phrase, MARGIN, MARGIN, 500, height);
     }
+  }
+  if(counter1>=3){
+    background(219, 62, 62); 
+    image1.resize(500, 450); 
+    image(image1, 600, 50);  
+    text(phrase, MARGIN, MARGIN, 500, height);
   }
 }
 
 function story2() {
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-  let phrase = 'THE WHITE PANTS \n\n I was at a movie theater when I got my first period. I did not notice the entire time, until I got up, and noticed something on my white pants. I was very far from home, and my parents were not able to pick me up for a few hours. I began panicking, but thankfully my friends stepped in. They helped me clean up and gave me a jacket I could tie around my hips. They reassured me that it would be okay and that it was normal. After that, I was able to continue my day normally. Looking back, the positive reaction I got has helped me create a positive relationship with this very normal phenomenon.\n\n THE END';  
+  let phrase = 'THE WHITE PANTS \n\n I was at a movie theater when I got my first period. I did not notice the entire time, until I got up, and noticed something on my white pants. I was very far from home, and my parents were not able to pick me up for a few hours. I began panicking, but thankfully my friends stepped in. They helped me clean up and gave me a jacket I could tie around my hips. They reassured me that it would be okay and that it was normal. After that, I was able to continue my day normally. Looking back, the positive reaction I got has helped me create a good relationship with this very normal phenomenon.\n\n THE END';  
   //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   fill(255); 
@@ -443,7 +450,7 @@ function story2() {
     if (millis() > nextUpdateMillis2) {
       currentMaxIndex2 = min(currentMaxIndex2 + 1, phrase.length);
           
-      nextUpdateMillis2 = millis() + random(30, 160);
+      nextUpdateMillis2 = millis() + random(10, 80);
     }
   let phraseToDraw = phrase.slice(0, currentMaxIndex2);
   text(phraseToDraw, MARGIN, MARGIN, 500, height);
@@ -456,11 +463,17 @@ function story2() {
       counter2 = 0;  
     }
   }
+  if(counter2 >= 3){
+    background(219, 62, 62); 
+    image3.resize(500, 450); 
+    image(image3, 600, 50);  
+    text(phrase, MARGIN, MARGIN, 500, height);
+  }
 }
 function story3() {
   background(219, 62, 62);  
   //button 1 - click through story, audio, visuals 
-  let phrase = 'ADULT ACNE \n\n I never experienced acne growing up, but recently as an adult, I developed severe acne. Despite trying skincare products, diets, and water filters, nothing improved. Even a dermatologist prescribed medication had little effect. It was my gynecologist who identified the cause as a hormonal imbalance related to PCOS - polycystic ovary syndrome. She told me there was no definitive cure, so I have focused on lifestyle changes to manage the condition.So far, I have been making a conscious effort to make positive changes, and the PCOS has been under control. I also feel healthier overall too! \n\n THE END';  
+  let phrase = 'ADULT ACNE \n\n I never experienced acne growing up, but recently as an adult, I developed severe acne. Despite trying skincare products, diets, and water filters, nothing improved. Even a dermatologist prescribed medication had little effect. It was my gynecologist who identified the cause as a hormonal imbalance related to Polycystic Ovary Syndrome (PCOS). She told me there was no definitive cure, so I had to focus on lifestyle changes to manage the condition. So far, I have been making a conscious effort to make positive changes, and the PCOS has been under control. I also feel healthier overall too! \n\n THE END';  
   //let end = "The End! Click 'd' to go back to main page."; 
   textAlign(LEFT, TOP);
   fill(255); 
@@ -486,7 +499,7 @@ function story3() {
     if (millis() > nextUpdateMillis3) {
       currentMaxIndex3 = min(currentMaxIndex3 + 1, phrase.length);
           
-      nextUpdateMillis3 = millis() + random(30, 160);
+      nextUpdateMillis3 = millis() + random(10, 80);
     }
   let phraseToDraw = phrase.slice(0, currentMaxIndex3);
   text(phraseToDraw, MARGIN, MARGIN, 500, height);
@@ -498,6 +511,12 @@ function story3() {
       tellingstory3 = 0;
       counter3 = 0;  
     }
+  }
+  if(counter3>=3){
+    background(219, 62, 62); 
+    image2.resize(550, 450); 
+    image(image2, 600, 50);  
+    text(phrase, MARGIN, MARGIN, 500, height);
   }
 }
 
